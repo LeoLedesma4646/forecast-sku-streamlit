@@ -246,17 +246,22 @@ elif page == "Forecast":
 
     with st.expander("Escenario futuro", expanded=True):
         price_change = st.slider("Cambio de precio vs. promedio reciente (%)", -20, 20, 0)
+	st.caption(
+        "Nota: el efecto del precio refleja asociaciones históricas del modelo, "
+        "no causalidad ni elasticidad de demanda. Cambios contraintuitivos pueden deberse "
+        "a estacionalidad, promociones o mezcla de canales/regiones."
+    )
+
         promo_pct = st.slider(
-            "Cobertura promocional estimada (%)", 0, 100,
+            "Porcentaje de canales/regiones con promoción (%)", 0, 100,
             int(series["promotion_flag"].tail(4).mean() * 100),
         )
-        holiday = st.checkbox("Tratar las semanas futuras como periodo especial/feriado", value=False)
+        
 
     future = future_scenario(
         series, horizon,
         price_change_pct=price_change,
         promotion_share=promo_pct / 100,
-        holiday=holiday,
         source_df=df,
     )
     pred = forecast_from_saved(series, future, model_name, models)
