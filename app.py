@@ -244,26 +244,31 @@ elif page == "Forecast":
     model_choice = c2.selectbox("Modelo", model_options)
     model_name = best_model if model_choice == "Mejor según WAPE" else model_choice
 
-    with st.expander("Escenario futuro", expanded=True):
-        price_change = st.slider("Cambio de precio vs. promedio reciente (%)", -20, 20, 0)
-	st.caption(
+with st.expander("Escenario futuro", expanded=True):
+    price_change = st.slider(
+        "Escenario de cambio de precio vs. promedio reciente (%)",
+        -20, 20, 0
+    )
+
+    st.caption(
         "Nota: el efecto del precio refleja asociaciones históricas del modelo, "
         "no causalidad ni elasticidad de demanda. Cambios contraintuitivos pueden deberse "
         "a estacionalidad, promociones o mezcla de canales/regiones."
     )
 
-        promo_pct = st.slider(
-            "Porcentaje de canales/regiones con promoción (%)", 0, 100,
-            int(series["promotion_flag"].tail(4).mean() * 100),
-        )
-        
-
-    future = future_scenario(
-        series, horizon,
-        price_change_pct=price_change,
-        promotion_share=promo_pct / 100,
-        source_df=df,
+    promo_pct = st.slider(
+        "Porcentaje de canales/regiones con promoción (%)",
+        0, 100,
+        int(series["promotion_flag"].tail(4).mean() * 100),
     )
+
+future = future_scenario(
+    series,
+    horizon,
+    price_change_pct=price_change,
+    promotion_share=promo_pct / 100,
+    source_df=df,
+)
     pred = forecast_from_saved(series, future, model_name, models)
     out = future[["week"]].copy()
     out["forecast_units"] = pred
