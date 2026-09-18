@@ -1,0 +1,31 @@
+{
+  "sku": "YO-029",
+  "start_week": "2022-03-28",
+  "end_week": "2024-12-16",
+  "n_weeks": 143,
+  "seasonal_period": 52,
+  "seasonal_cycles": 2.75,
+  "fourier_k": 2,
+  "ridge_alpha": 0.1,
+  "dhr_order": [
+    1,
+    0,
+    1
+  ],
+  "sarimax_order": [
+    1,
+    0,
+    0
+  ],
+  "sarimax_seasonal_order": [
+    1,
+    0,
+    0,
+    52
+  ],
+  "seasonal_sarimax_converged": true,
+  "dhr_converged": true,
+  "winner": "Fourier + ARMA (DHR)",
+  "winner_WAPE": 8.146260927560425,
+  "winner_MAE": 69.82024469996581
+}

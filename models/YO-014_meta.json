@@ -1,0 +1,31 @@
+{
+  "sku": "YO-014",
+  "start_week": "2022-05-09",
+  "end_week": "2024-12-23",
+  "n_weeks": 138,
+  "seasonal_period": 52,
+  "seasonal_cycles": 2.6538461538461537,
+  "fourier_k": 2,
+  "ridge_alpha": 0.1,
+  "dhr_order": [
+    1,
+    0,
+    0
+  ],
+  "sarimax_order": [
+    1,
+    0,
+    0
+  ],
+  "sarimax_seasonal_order": [
+    0,
+    0,
+    1,
+    52
+  ],
+  "seasonal_sarimax_converged": true,
+  "dhr_converged": true,
+  "winner": "Fourier + Ridge",
+  "winner_WAPE": 8.502093420552658,
+  "winner_MAE": 55.575350659012535
+}

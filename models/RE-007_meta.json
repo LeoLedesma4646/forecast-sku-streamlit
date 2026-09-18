@@ -1,0 +1,31 @@
+{
+  "sku": "RE-007",
+  "start_week": "2022-05-30",
+  "end_week": "2024-12-23",
+  "n_weeks": 135,
+  "seasonal_period": 52,
+  "seasonal_cycles": 2.5961538461538463,
+  "fourier_k": 2,
+  "ridge_alpha": 0.1,
+  "dhr_order": [
+    1,
+    0,
+    0
+  ],
+  "sarimax_order": [
+    1,
+    0,
+    0
+  ],
+  "sarimax_seasonal_order": [
+    0,
+    0,
+    1,
+    52
+  ],
+  "seasonal_sarimax_converged": true,
+  "dhr_converged": true,
+  "winner": "Seasonal Naive",
+  "winner_WAPE": 7.213016420484367,
+  "winner_MAE": 80.16666666666667
+}
